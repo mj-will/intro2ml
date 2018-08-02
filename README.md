@@ -54,9 +54,9 @@ $ virtualenv <path/name>
 
 There are lots of other [options](https://virtualenv.pypa.io/en/stable/reference/), such as passing all or specific packages. But they are not important for this use case.
 
-For example to create an enviroment called 'ml' in my current directory ```$ virtualenv ml```
+For example to create an environment called 'ml' in my current directory ```$ virtualenv ml```
 
-Now to activate the enviroment with:
+Now to activate the environment with:
 
 ```
 $ source </path/name/bin/activate(.csh)>
@@ -70,11 +70,18 @@ First to make sure ``pip`` is up-to-date
 $ pip install --upgrade pip
 ```
 
-Then we can install the necessary pacakges:
+Then you can install the necessary packages using the requirements file:
+
+```
+$ pip install -r requirements.txt
+```
+
+The packages can also been installed manually:
+
 ```
 $ pip install <package-name>
 ```
-Insted of a name you can use a space seperate list of packages names ``$ pip install numpy scipy pandas``.
+Instead of a name you can use a space separate list of packages names ``$ pip install numpy scipy pandas``.
 
 To then add the virtualenv to Jupyter:
 
