@@ -16,6 +16,8 @@ They can be run using the Google Colab icons, for example:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/mj-will/intro2ml/blob/master/classification-MLP.ipynb)
 
+To then enable the GPU go to:  **Runtime -> Change runtime type -> Hardware accelerator -> GPU** 
+
 ### Running locally with Conda
 
 These scripts can also be ran locally by cloning the repository and using [conda](https://docs.conda.io/en/latest/miniconda.html) and the provided file `environment.yml` to create an environment to run a jupyter-notebook from.
