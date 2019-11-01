@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.lessons.size > 0 -%}
+    <h1 class="lesson-list-heading">{{ page.list_title | default: "Lessons" }}</h1>
+    <ol class="lesson-list" type="1" start="0">
+      {%- for lesson in site.lessons -%}
+      <h2>
+        <li>
+          <a class="lesson-link" href="{{ lesson.url | relative_url }}">
+              {{lesson.title | escape }}
+          </a>
+         </li>
+       </h2>
+        {%- if site.show_excerpts -%}
+          {{ lesson.excerpt }}
+        {%- endif -%}
+      {%- endfor -%}
+    </ol>
+    <!--
+    <p class="feed-subscribe">
+      <a href="{{ 'feed.xml' | relative_url }}">
+        <svg class="svg-icon orange"><use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg><span>Subscribe</span>
+      </a>
+    </p>
+    -->
+  {%- endif -%}
+
+<div>
