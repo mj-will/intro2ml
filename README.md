@@ -14,7 +14,7 @@ These notebooks are intended to be used with [Google Colab](https://colab.resear
 
 They can be run using the Google Colab icons, for example:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/mj-will/intro2ml/blob/master/classification-MLP.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mj-will/intro2ml/blob/master/notebooks/classification-MLP.ipynb)
 
 To then enable the GPU go to:  **Runtime -> Change runtime type -> Hardware accelerator -> GPU** 
 
