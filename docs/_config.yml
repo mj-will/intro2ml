@@ -19,7 +19,7 @@ minima:
     github:  mj-will
 
 collections:
-  lessons:
+  topics:
     output: true
 
 plugins:
