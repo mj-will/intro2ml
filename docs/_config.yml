@@ -1,10 +1,12 @@
 title: Intro2ML
+author: Michael Williams
 email: m.williams.4@research.gla.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
   Intro2ML aims to introduce you to some of the basic concepts of machine learning 
   in an interactive manner.
 baseurl: "/intro2ml" # the subpath of your site, e.g. /blog
 url: "https://mj-will.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+show_excerpts: true
 
 # Build settings
 markdown: kramdown
@@ -26,3 +28,5 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+kramdown:
+    math_engine: mathjax
