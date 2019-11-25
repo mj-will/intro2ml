@@ -26,6 +26,19 @@ $$y = \sigma (\mathbf{w} \cdot \mathbf{x} + b)$$
 
 where $\mathbf{w}$ is a vector of trainable parameters known as the **weights**, $b$ a scalar value that is also trainable and known as the **bias** and $\sigma$ a chosen function, known as an **activation funtion**, that is normally non-linear and should be differentiable. Pictorially this is:
 
+The non-lienearity of activation functions is what allows an neural network to learn complex non-linear mappings. There are numerous different functions that are used but perhaps the most common is the rectified linear unit or ReLU for short. It is defined as:
+
+$$\sigma(x)= \begin{cases} x \quad \text{if} \ x > 0 \\ 0 \quad \text{elsewhere} \end{cases}$$
+
+
+<div style="text-align:center"><img src="{{ site.baseurl }}/assets/relu.svg" /></div>
+
+Other common acitvations functions include TanH, Exponential Linear Unit (ELU) and Leaky ReLU.
+
+
+
+#### From a single neuron to a network
+
 A single neural network contains multiple neurons and they are arranged in layers. Each layer is a vector function (it returns a vector) that has a weights matrix $\mathbf{W}_{\text{l}}$ and bias vector $$\mathbf{b}_{\text{l}}$$:
 
 $$\mathbf{f}_{\text{l}}(\mathbf{x}) = \mathbf{\sigma}_{\text{l}} (\mathbf{W}_{\text{l}} \cdot \mathbf{x} + \mathbf{b}_{\text{l}})$$
@@ -46,7 +59,7 @@ The answer boils down to a **loss function**, **backpropogation** and **gradient
 
 In order for a neural network, or indeed almost any machine learning algorithm, to learn it needs a function to describe it's current performance. This function is known as a **loss function** or cost function and, in the case of a supervised task, it describes the difference between the networks output and the ground truth. An example of a loss function is the **mean squared error** (MSE) which, for a vector of predicted values $\mathbf{\hat{y}}$ and a vector of true values $\mathbf{y}$ both of length $N$ is defined as:
 
-$$\text{MSE} = \frac{1}{N} \sum_{i=1}^{F} (y_{i} - \hat{y}_{i})^{2}$$
+$$\text{MSE} = \frac{1}{N} \sum_{i=1}^{N} (y_{i} - \hat{y}_{i})^{2}$$
 
 Such as function can then be used to update the trainable parameters of the network with an algorithm such as backpropogation.
 
@@ -76,6 +89,8 @@ This is limited to binary classifcation and outputs a number in the range $[0, 1
 
 $$\sigma(x) = \frac{1}{1 + e^{-x}}$$
 
+<div style="text-align:center"><img src="{{ site.baseurl }}/assets/sigmoid.svg" /></div>
+
 The loss function for this case is **bianry cross-entropy** (log-loss) which for $N$ samples is defined as:
 
 $$\text{BCE} = - \sum_{i=1}^{N} y_{i} \log\left(\hat{y}_{i}\right) + (1 - y_{i}) \log\left(1 - \hat{y}_{i}\right)$$
@@ -94,15 +109,53 @@ $$\text{CE} = - \sum_{i=1}^{N} \sum_{j=i}^{C} y_{ij} \log(\hat{y}_{ij}) $$
 
 ### Regression
 
-#### Linear function
+#### The indentity
 
+In regression problems the output of the neural network generally needs to be continous and unbounded so the activation function is simply the identity:
+
+$$\sigma(x) = x $$
+
+<div style="text-align:center"><img src="{{ site.baseurl }}/assets/identity.svg" /></div>
+
+There is no one single loss function to use for regression task but the following are some of the most commonly used.
 
 #### Mean squared error
 
+Probably the go-to loss function for regression but is sensitive to outliers and will be heavily affected by single vey bad predictions.
+
+$$\text{MSE} = \frac{1}{N} \sum_{i=1}^{F} (y_{i} - \hat{y}_{i})^{2}$$
+
 #### Mean absolute error
 
+Very similar to MSE but not as sensitive to outliers.
+
+$$\text{MAE} = \frac{1}{N} \sum_{i=1}^{F} |y_{i} - \hat{y}_{i}| $$
+
+#### Mean squared logarithmic error
+
+The mean squared logarithmic error is well suited to problems where the values a large and you are more concerned with relative errors.
+
+$$\text{MSLE} = \sqrt{\frac{1}{N} \sum_{i=1}^{F} \left[\log_{e}(y_{i}+1) - \log_{e}(\hat{y}_{i}+1)\right]^{2}}$$
+
+#### Other activation functions
+
+The are numerous other activation functions that can be used in regression such as: root mean sqaured error, mean sqaured percentage error, R-squared... Each is best suited to particular use cases but those mentioned before will work in most situations.
 
 
 ## Implementation of neural networks for classification and regression
 
+Now the we've covered the basics we can move on to implementing a neural network. This is relatively easy in Python since there a various packages that simplify the process and save us from having to define all the core building blocks manually such as activation functions, loss functions etc. Two of the most commonly used are:
 
+* [Tensorflow/Keras](https://www.tensorflow.org/)
+* [Pytorch](https://pytorch.org/)
+
+Each have their pros and cons and see use in different scenarios but at a simple level they serve the same purpose. The notebooks for this tutorial will use Keras in Tensorflow since it is supported natively in Google Colab
+
+
+We start with a classification. The following notebook demonstrates how to train a neural network to classify handwritten digists from the MNIST dataset:
+
+#### Classification example: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mj-will/intro2ml/blob/master/notebooks/classification-MLP.ipynb)
+
+The next notebook builds on the previous and explains how to implement a neural network for regression:
+
+#### Regression example: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mj-will/intro2ml/blob/master/notebooks/regression-sine.ipynb)
