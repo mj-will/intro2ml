@@ -44,9 +44,9 @@ The answer boils down to a **loss function**, **backpropogation** and **gradient
 
 #### Loss function
 
-In order for a neural network, or indeed almost any machine learning algorithm, to learn it needs a function to describe it's current performance. This function is known as a **loss function** or cost function and, in the case of a supervised task, it describes the difference between the networks output and the ground truth. An example of a loss function is the **mean squared error** (MSE) which, for a vector of predicted values $\mathbf{y}$ and a vector of true values $\mathbf{\hat{y}}$ both of length $n$ is defined as:
+In order for a neural network, or indeed almost any machine learning algorithm, to learn it needs a function to describe it's current performance. This function is known as a **loss function** or cost function and, in the case of a supervised task, it describes the difference between the networks output and the ground truth. An example of a loss function is the **mean squared error** (MSE) which, for a vector of predicted values $\mathbf{\hat{y}}$ and a vector of true values $\mathbf{y}$ both of length $N$ is defined as:
 
-$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_{i} - y_{i})^{2}$$
+$$\text{MSE} = \frac{1}{N} \sum_{i=1}^{F} (y_{i} - \hat{y}_{i})^{2}$$
 
 Such as function can then be used to update the trainable parameters of the network with an algorithm such as backpropogation.
 
@@ -66,9 +66,42 @@ In **classification** the goal is to correctly indentiy the **class** an input c
 
 For **regression** the goal is to predict a value (or values) given an input, for example predicting housing prices or the frequency of signal. In this case the output is continous over some range (or potentially unbounded) and the network must output a number (or vector of numbers).
 
-So the core difference is the output and this is reflected in the activation function used in the last layer of the network. If the output is different then the same applied the function that quantifies the "quality" of the networks output, the loss function. For classification these are typically:
+ASo the core difference is the output and this is reflected in the activation function used in the last layer of the network. If the output is different then the same applied the function that quantifies the "quality" of the networks output, the loss function. 
 
-* The **sigmoid** function. This is limited to binary classifcation and outputs a number in the range $[0, 1]$ where the extrema represent the two possible outcomes.
+### Classification
+
+#### The sigmoid function and binary cross-entropy
+
+This is limited to binary classifcation and outputs a number in the range $[0, 1]$ that can be considered a probability:
+
+$$\sigma(x) = \frac{1}{1 + e^{-x}}$$
+
+The loss function for this case is **bianry cross-entropy** (log-loss) which for $N$ samples is defined as:
+
+$$\text{BCE} = - \sum_{i=1}^{N} y_{i} \log\left(\hat{y}_{i}\right) + (1 - y_{i}) \log\left(1 - \hat{y}_{i}\right)$$
+
+where $$\hat{y}_{i}$$ is the probability for a particular sample $i$ and the $y_{i}$ the true value for the same sample.
+
+#### The softmax function and cross-entropy
+
+This is the generlised version of the sigmoid for n-class problems. The outputs are again in $[0,1]$ and importantly their sum is equal to 1. It is defined as:
+
+$$\sigma(\mathbf{x})_{i} = \frac{e^{x_{i}}}{\sum_{j=1}^{C} e^{x_{j}}} \ \text{for} \ i=1, ..., C \ \text{and} \ \mathbf{x} \in \mathbb{R}^{C}$$
+
+where $C$ is the number of classes. The loss function is the generalised version of binary cross-entropy, cross-entropy:
+
+$$\text{CE} = - \sum_{i=1}^{N} \sum_{j=i}^{C} y_{ij} \log(\hat{y}_{ij}) $$
+
+### Regression
+
+#### Linear function
+
+
+#### Mean squared error
+
+#### Mean absolute error
+
+
 
 ## Implementation of neural networks for classification and regression
 
