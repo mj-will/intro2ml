@@ -24,6 +24,10 @@ collections:
   topics:
     output: true
 
+exclude: 
+  - assets/gifs/
+
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
