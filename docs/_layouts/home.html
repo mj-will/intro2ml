@@ -11,7 +11,7 @@ layout: default
 
   {%- if site.topics.size > 0 -%}
     <h1 class="topic-list-heading">{{ page.list_title | default: "Topics" }}</h1>
-    <ol class="topic-list" type="1" start="0">
+    <ol class="topic-list" style="list-style-type:none">
       {%- for topic in site.topics -%}
       <h2>
         <li>
