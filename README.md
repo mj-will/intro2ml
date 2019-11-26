@@ -1,4 +1,4 @@
-# intro2ml
+# [intro2ml](https://mj-will.github.io/intro2ml/)
 An assortment of scripts to help you get started in machine learning.
 
 Some of scripts are based on the [examples](https://github.com/keras-team/keras/tree/master/examples) provided for Keras. They have been transferred to Jupyter notebooks and then edited and added to.
