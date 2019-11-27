@@ -35,7 +35,7 @@ $$\sigma(x)= \begin{cases} x \quad \text{if} \ x > 0 \\ 0 \quad \text{elsewhere}
 
 <div style="text-align:center"><img src="{{ site.baseurl }}/assets/relu.svg" /></div>
 
-Other common activations functions include TanH, Exponential Linear Unit (ELU) and Leaky ReLU.
+Other common activations functions include TanH, Exponential Linear Unit (ELU) and Leaky ReLU. See [here](https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html) for more information.
 
 
 
@@ -74,6 +74,8 @@ Such as function can then be used to update the trainable parameters of the netw
 **Backpropogation** is an algorithm that calculates the gradient of the loss function with respect to the neural network's weights. It uses the chain rule and proceeds backwards through the network from the output through all of the layers. The gradients can the be used to change the parameters and try to minimise (or maximise) the loss function. 
 
 This minimisation is then acheived using a **gradient descent algorithm**, such as stochastic graident descent, that explores the parameter space described by the networks weights. This is done in steps where the some data $\mathbf{x}$ is propogated through the network in a **forward pass** and the output $\mathbf{y}$, with the change in the loss function, used to update the weights.
+
+For a more indepth explanation see [here](https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html).
 
 Up until this point most of statements about neural networks have been problem agnostic but now we will focus on the specifics of two common types of problems: classification and regression.
 
@@ -143,9 +145,9 @@ The mean squared logarithmic error is well suited to problems where the values a
 
 $$\text{MSLE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} \left[\log_{e}(y_{i}+1) - \log_{e}(\hat{y}_{i}+1)\right]^{2}}$$
 
-#### Other activation functions
+#### Other loss functions
 
-The are numerous other activation functions that can be used in regression such as: root mean squared error, mean squared percentage error, R-squared... Each is best suited to particular use cases but those mentioned before will work in most situations.
+The are numerous other loss functions that can be used in regression such as: root mean squared error, mean squared percentage error, R-squared... Each is best suited to particular use cases but those mentioned before will work in most situations. For more complete list see [here](https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html).
 
 
 ## Implementation of neural networks for classification and regression
